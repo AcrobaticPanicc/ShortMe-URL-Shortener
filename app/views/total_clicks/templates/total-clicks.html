@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <div>
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <div class="card m-auto" style="max-width:850px">
+                    <div class="card-body">
+                        <h4><strong>Total URL Clicks</strong><br></h4>
+                        <p id="total-p"> Your URL has been clicked {{ total_clicks }} times so far.<br></p>
+                        <p id="long-link-1"></p>
+
+                        <a href="{{ url_for('index_blueprint.index') }}">
+                            <button class="btn btn-primary" id="copy-btn" type="button"
+                                    style="width: 200px;height: 51px;background-color: rgb(41,41,41);transition: border 0.2s ease;">
+                                Shorten another URL
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

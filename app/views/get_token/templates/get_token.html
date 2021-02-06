@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <body>
+        <div>
+            <div class="row">
+                <div class="col-md-10 offset-md-1">
+                    <div class="card m-auto" style="max-width:850px">
+                        <div class="card-body">
+
+                            <h1 id="token"></h1>
+                            <h1>Get your free ShortMe's API token</h1>
+                            <p>Please enter your email below to get a verification code</p>
+                            <div class="card">
+                                <form class="card-body  d-flex align-items-center" method="POST"
+                                      onsubmit="return checkEmail(event)"
+                                      action="{{ url_for('send_otp_blueprint.email_validation') }}">
+
+                                    <label for="email_input"></label><input
+                                        class="form-control form-control-lg flex-shrink-1 form-control-borderless"
+                                        placeholder="example@email.com" id="email_input" name="email"/>
+                                    <button class="btn btn-primary" type="submit"
+                                            style="width: 200px; height: 51px; background-color: rgb(41, 41, 41); transition: border 0.2s ease;">
+                                        Send Code
+                                    </button>
+                                    <br>
+                                </form>
+                            </div>
+
+                            <br>
+                            <p>*If you alredy verified your email you will get the API token</p>
+                            <div class="alert-box alert-warning" id="invalid-email">Please enter a valid email address
+                            </div>
+                            <div class="alert-box alert-warning" id="cant-be-empty">This feild cannot be empty</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+
+{% endblock %}

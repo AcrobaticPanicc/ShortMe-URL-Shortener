@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <body>
+        <div>
+            <div class="row">
+                <div class="col-md-10 offset-md-1">
+                    <div class="card m-auto" style="max-width:850px">
+                        <div class="card-body">
+
+                            <h1 id="token"></h1>
+                            <h1><span>✉</span> Please check your inbox</h1>
+                            <p>We've sent a verification code to your email. Please enter it below and click
+                                verify.</p>
+
+                            <div class="card">
+                                <form class="card-body  d-flex align-items-center" method="POST"
+                                      onsubmit="return checkEmail(event)"
+                                      action="{{ url_for('verify_code_blueprint.validate_code') }}">
+
+                                    <label for="email_input"></label>
+                                    <input maxlength="7"
+                                           class="form-control form-control-lg flex-shrink-1 form-control-borderless"
+                                           placeholder="000 000" id="verification" name="verification"/>
+                                    <button class="btn btn-primary" type="submit"
+                                            style="width: 200px; height: 51px; background-color: rgb(41, 41, 41); transition: border 0.2s ease;">
+                                        Verify
+                                    </button>
+                                    <br>
+                                </form>
+                            </div>
+
+
+                            {% if is_verified == 'False' %}
+                                <div class="alert-box alert-warning" id="invalid-verification">
+                                    Your email already exist in our database but it's not activated.<br>Please check
+                                    your
+                                    inbox for the verification
+                                    code.
+                                </div>
+                            {% endif %}
+
+                            {% if is_code_valid %}
+                                <div class="alert-box alert-warning" id="invalid-verification">Wrong code, plesee try
+                                    again
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+
+{% endblock %}

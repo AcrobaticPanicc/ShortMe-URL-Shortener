@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <body>
+
+        <div>
+            <div class="row">
+                <div class="col-md-10 offset-md-1">
+                    <div class="card m-auto" style="max-width:850px">
+                        <div class="card-body">
+
+                            <h1 id="token"></h1>
+                            <h1>Your API token</h1>
+
+                            <form class="card-body  d-flex align-items-center">
+                                <input spellcheck="false" readonly
+                                       class="card form-control form-control form-control-lg flex-shrink-1 form-control-borderless"
+                                       id="copy-able" type="text" value="{{ auth_token }}"
+                                       style="margin-left: 1.4%;margin-right: 1.4%;height: 51px;border-width: 1px;">
+
+                                <button class="btn btn-primary" onclick="copyToClipboard()" id="copy-btn" type="button"
+                                        style="width: 200px;height: 51px;background-color: rgb(41,41,41);transition: border 0.2s ease;">
+                                    Copy Token
+                                </button>
+                            </form>
+                            <div class="alert-box success">Token copied to clipboard</div>
+                            <div class="alert-box alert-warning" id="cant-be-empty">This feild cannot be empty</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+
+{% endblock %}
