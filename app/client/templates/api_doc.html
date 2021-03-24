@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <body>
+
+        <div>
+            <div class="row">
+                <div class="col-md-10 offset-md-1">
+                    <div class="card m-auto" style="max-width:850px">
+                        <div class="card-body">
+
+                            <h2><strong>The ShortMe API</strong><br></h2>
+                            <p>ShortMe's API will allow you to access ShortMe's URL shortening capabilities over
+                                API.</p>
+                            <h4>What you need to get started</h4>
+                            <ul>
+                                <li>Access token</li>
+                            </ul>
+
+                            <h4>Shorten your first link!</h4>
+                            <ol>
+                                <li>Generate an <a href="{{ url_for('get_token_blueprint.get_token') }}"> access token</a>.</li>
+                                <li>You'll use the POST method to the <kbd>/api/shorten</kbd> endpoint. Append your
+                                    access token as a header in your request. <br>
+                                    Here's an example:
+                                    <code>&lt;Authorization: Bearer {token}&gt;</code> <br> <br>
+                                    Example call: <br>
+                                    <kbd>POST</kbd> http://shortme.biz/api/shorten?url=http://www.longurl.com <br> <br>
+                                    Example Response:
+                                    <div class="code-block">
+                                        <pre>{<br>    'short_url': shortme.biz/f3Jds,<br>    'original_url': 'http://www.longurl.com',<br>    'success':True<br>}</pre>
+                                    </div>
+                                </li>
+                            </ol>
+                            <br>
+
+
+                            <h4>Get total URL clicks</h4>
+                            <p>You can use ShortMe's API to track the total number of clicks your short URL received</p>
+                            <ol>
+                                <li>You'll use the GET method to the <kbd>/api/total_clicks</kbd> endpoint. Access token
+                                    is not required.<br>
+                                    <br>
+                                    Example call: <br>
+                                    <kbd>GET</kbd> http://shortme.biz/api/total_clicks?url=shortme.biz/f3Jds <br> <br>
+                                    Example Response:
+                                    <div class="code-block">
+                                        <pre>{<br>    'total': 2,<br>    'short_url': 'shortme.biz/f3Jds',<br>    'original_url': 'http://www.longurl.com',<br>    'success': True <br>}</pre>
+                                    </div>
+                                </li>
+                            </ol>
+
+
+                            {#                            <a href="{{ url_for('index_blueprint.index') }}">#}
+                            {#                                <button class="btn btn-primary" id="try-again-btn" type="button"#}
+                            {#                                        style="width: 200px;height: 51px;background-color: rgb(41,41,41);transition: border 0.2s ease;">#}
+                            {#                                    Try Again#}
+                            {#                                </button>#}
+                            {#                            </a>#}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+
+{% endblock %}

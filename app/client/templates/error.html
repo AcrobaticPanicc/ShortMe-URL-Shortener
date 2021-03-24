@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <body>
+        <div>
+            <div class="row">
+                <div class="col-md-10 offset-md-1">
+                    <div class="card m-auto" style="max-width:850px">
+                        <div class="card-body">
+                            <h4><strong>Yikes! We could not shorten this URL 🙁</strong><br></h4>
+                            <p>&nbsp;<strong>The URL you entered is not valid.</strong></p>
+                            <ul>
+                                <li class="bullet"><i class="fa fa-check" style="color: rgb(0,128,255);"></i>Make sure
+                                    the website is online<br></li>
+                                <li class="bullet"><i class="fa fa-check" style="color: rgb(0,128,255);"></i>Check if
+                                    the URL is valid<br></li>
+
+                                <li class="bullet"><i class="fa fa-check" style="color: rgb(0,128,255);"></i>&nbsp;The
+                                    URL may have
+                                    been blocked<br></li>
+                                <li class="bullet"><i class="fa fa-check" style="color: rgb(0,128,255);"></i>&nbsp;The
+                                    url may have
+                                    been reported<br></li>
+                            </ul>
+                            <a href="{{ url_for('index_blueprint.index') }}">
+                                <button class="btn btn-primary" id="try-again-btn" type="button"
+                                        style="width: 200px;height: 51px;background-color: rgb(41,41,41);transition: border 0.2s ease;">
+                                    Try Again
+                                </button>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+
+{% endblock %}

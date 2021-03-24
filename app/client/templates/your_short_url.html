@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <body>
+
+        <div>
+            <div class="row">
+                <div class="col-md-10 offset-md-1">
+                    <div class="card m-auto" style="max-width:850px">
+                        <div class="card-body">
+                            <h4><strong>Your shortened URL</strong><br></h4>
+                            <p>Copy the shortened link to share it.<br></p>
+
+                            <div class="card">
+                                <form class="card-body  d-flex align-items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"
+                                         fill="none" class="d-none d-sm-block h4 text-body m-0">
+                                        <path d="M13.8284 10.1716C12.2663 8.60948 9.73367 8.60948 8.17157 10.1716L4.17157 14.1716C2.60948 15.7337 2.60948 18.2663 4.17157 19.8284C5.73367 21.3905 8.26633 21.3905 9.82843 19.8284L10.93 18.7269M10.1716 13.8284C11.7337 15.3905 14.2663 15.3905 15.8284 13.8284L19.8284 9.82843C21.3905 8.26633 21.3905 5.73367 19.8284 4.17157C18.2663 2.60948 15.7337 2.60948 14.1716 4.17157L13.072 5.27118"
+                                              stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                              stroke-linejoin="round"></path>
+                                    </svg>
+                                    <input class="card form-control form-control form-control-lg flex-shrink-1 form-control-borderless"
+                                           id="copy-able" type="text" value="{{ full_short_url }}"
+                                           style="margin-left: 1.4%;margin-right: 1.4%;height: 51px;border-width: 1px;">
+
+                                    <button class="btn btn-primary" onclick="copyToClipboard()" id="copy-btn"
+                                            type="button"
+                                            style="width: 200px;height: 51px;background-color: rgb(41,41,41);transition: border 0.2s ease;">
+                                        Copy URL
+                                    </button>
+                                </form>
+                            </div>
+
+                            <div class="alert-box success">URL copied to clipboard</div>
+
+                            <form action="{{ url_for('total_clicks_blueprint.total_clicks') }}">
+
+                                <input type="hidden" id="new_url" name="short_url" value="{{ short_url }}">
+                                <p id="long-link">Original URL:&nbsp;<a href="#">{{ original_url }}</a></p>
+                                <p id="long-link-1"><a id="total-clicks-link"
+                                                       onclick="this.closest('form').submit();return false;" href="">Track</a>
+                                    the total clicks of your shortened URL in
+                                    real-time</p>
+                            </form>
+
+                            <div>
+                                <h4><strong>Share your URL</strong><br></h4>
+                            </div>
+                            <div class="social">
+                                <a href="#" class="fa fa-facebook"></a>
+                                <a href="#" class="fa fa-twitter"></a>
+                                <a href="#" class="fa fa-linkedin"></a>
+                                <a href="#" class="fa fa-reddit"></a>
+                            </div>
+                            <div class="res-home-btn">
+                                <a href="{{ url_for('index_blueprint.index') }}">
+                                    <button class="btn btn-primary" id="go-home-btn" type="button"
+                                            style="width: 200px;height: 51px;background-color: rgb(41,41,41);transition: border 0.2s ease;">
+                                        Go back home
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+
+{% endblock %}

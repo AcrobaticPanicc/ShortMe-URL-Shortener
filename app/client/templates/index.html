@@ -1,0 +1,57 @@
+{% extends "base.html" %} {% block content %}
+
+    <body>
+        <div>
+            <div class="row">
+                <div class="col-md-10 offset-md-1">
+                    <div class="card m-auto" style="max-width: 850px;">
+                        <div class="card-body">
+                            <form class="d-flex align-items-center" method="POST" onsubmit="return checkUrl(event)"
+                                  action="{{ url_for('shorten_url_blueprint.shorten_url') }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"
+                                     fill="none" class="d-none d-sm-block h4 text-body m-0">
+                                    <path
+                                            d="M13.8284 10.1716C12.2663 8.60948 9.73367 8.60948 8.17157 10.1716L4.17157 14.1716C2.60948 15.7337 2.60948 18.2663 4.17157 19.8284C5.73367 21.3905 8.26633 21.3905 9.82843 19.8284L10.93 18.7269M10.1716 13.8284C11.7337 15.3905 14.2663 15.3905 15.8284 13.8284L19.8284 9.82843C21.3905 8.26633 21.3905 5.73367 19.8284 4.17157C18.2663 2.60948 15.7337 2.60948 14.1716 4.17157L13.072 5.27118"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                    ></path>
+                                </svg>
+                                <input class="form-control form-control-lg flex-shrink-1 form-control-borderless"
+                                       placeholder="Enter the link here" id="url-input" name="original_url"/>
+                                <button class="btn btn-primary" type="submit"
+                                        style="width: 200px; height: 51px; background-color: rgb(41, 41, 41); transition: border 0.2s ease;">
+                                    Shorten
+                                </button>
+
+                            </form>
+                            <div class="alert-box alert-warning">This field cannot be empty</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="text-center" id="">
+            <div class="">
+                <p></p>
+                <h6 class="text-dark font-weight-bold">Check out <a href="{{ url_for('api_doc_blueprint.api_doc') }}">ShortMe's
+                    API</a></h6>
+                <p></p>
+            </div>
+        </div>
+
+        <div class="text-center" id="credits">
+            <div class="card credits-card">
+                <h6 class="text-dark font-weight-bold"><i class="fa fa-code c"></i> with <i class="fa fa-heart c"></i>
+                    by <a href="https://www.linkedin.com/in/tomer-chaim/">Tomer</a></h6>
+
+                <h6 class="text-dark font-weight-bold">Check out my <a
+                        href="https://github.com/acrobaticPanicc/">GitHub</a></h6>
+            </div>
+        </div>
+    </body>
+
+{% endblock %}
